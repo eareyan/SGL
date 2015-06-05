@@ -1,0 +1,33 @@
+<style>
+#hor-minimalist-a {width: 100%;margin: 0px}
+</style>
+
+<h2 id="tituloCuenta">Cuentas Bancarias </h2>
+<h3>Lista de Cuentas Bancarias | <a href="/configuracion/cuentas/agregar">Agregar Cuenta</a></h3>
+<?php if (count($this->paginator)): ?>
+	<?=$this->formBuscar->render()?>
+	<?=$this->paginationControl($this->paginator)?>
+	<?=$this->headTabla(array('Nombre','Banco','Titular','#','Tipo','Identificaci&oacute;n','Correo','Editar','Eliminar'))?>
+	<?php foreach ($this->paginator as $item): ?>
+		<tr>
+			<td><?=$item['nombre_cuenta']?></td>
+			<td><?=$item['banco_cuenta']?> </td>
+			<td><?=$item['titular_cuenta']?> </td>
+			<td><?=$item['numero_cuenta']?> </td>
+			<td><?=$item['tipo_cuenta']?> </td>
+			<td><?=$item['identificacion_cuenta']?> </td>
+			<td><?=$item['correo_cuenta']?> </td>
+			<td><a href="/configuracion/cuentas/agregar/id_cuenta/<?=$item['id_cuenta']?>">Editar</a></td>
+			<td><a href="/configuracion/cuentas/eliminar/id_cuenta/<?=$item['id_cuenta']?>">Eliminar</a></td>		
+		</tr>
+	<?php endforeach; ?>
+	<?=$this->footTabla()?>
+	<?=$this->paginationControl($this->paginator)?>
+<?php else: ?>
+	<?php if(isset($this->modoBuscar)):?>
+		<?=$this->formBuscar->render()?>
+		<h2>No hay cuentas bancarias registradas en el sistema para esta busqueda</h2>
+	<?php else: ?>
+		<div class="info">No hay cuentas bancarias registradas en el sistema</div>
+	<?php endif; ?>		
+<?php endif; ?>

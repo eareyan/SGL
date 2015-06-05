@@ -1,0 +1,221 @@
+<style>
+#hor-minimalist-a {width: 100%;margin: 0px}
+</style>
+<script type="text/javascript" src="/js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-1.8.13.custom.min.js"></script>
+<script type="text/javascript">
+$(function(){	
+	// Dialog			
+	$('#dialog_activar').dialog({
+		autoOpen: false,
+		width: 600,
+		buttons: {
+			"Ok": function() {
+				window.location = '/casos/index/cambiarestatus/opcion/activar/id_caso/<?=$this->caso->getPropiedad('id_caso')?>';
+				$(this).dialog("close"); 
+			}, 
+			"Cancel": function() {
+				$(this).dialog("close"); 
+			} 
+		}
+	});
+	$('#dialog_desactivar').dialog({
+		autoOpen: false,
+		width: 600,
+		buttons: {
+			"Ok": function() {
+				window.location = '/casos/index/cambiarestatus/opcion/desactivar/id_caso/<?=$this->caso->getPropiedad('id_caso')?>';
+				$(this).dialog("close"); 
+			}, 
+			"Cancel": function() {
+				$(this).dialog("close"); 
+			} 
+		}
+	});
+	$('#dialog_comenzar').dialog({
+		autoOpen: false,
+		width: 600,
+		buttons: {
+			"Ok": function() {
+				window.location = '/casos/index/cambiarestatus/opcion/reiniciar/id_caso/<?=$this->caso->getPropiedad('id_caso')?>';
+				$(this).dialog("close"); 
+			}, 
+			"Cancel": function() {
+				$(this).dialog("close"); 
+			} 
+		}
+	});
+	$('#dialog_finalizar').dialog({
+		autoOpen: false,
+		width: 600,
+		buttons: {
+			"Ok": function() {
+				window.location = '/casos/index/cambiarestatus/opcion/finalizar/id_caso/<?=$this->caso->getPropiedad('id_caso')?>';
+				$(this).dialog("close"); 
+			}, 
+			"Cancel": function() {
+				$(this).dialog("close"); 
+			} 
+		}
+	});
+	// Dialog Link
+	$('#dialog_link_activar').click(function(){
+		$('#dialog_activar').dialog('open');
+		return false;
+	});
+	$('#dialog_link_desactivar').click(function(){
+		$('#dialog_desactivar').dialog('open');
+		return false;
+	});
+	$('#dialog_link_comenzar').click(function(){
+		$('#dialog_comenzar').dialog('open');
+		return false;
+	});
+	$('#dialog_link_finalizar').click(function(){
+		$('#dialog_finalizar').dialog('open');
+		return false;
+	});
+});
+</script>
+
+
+<h2 id="tituloCasos">Detalles del caso <i><?=$this->caso->getPropiedad('nombre_caso')?></i></h2>
+<h3><a href="/casos/index/index">Listar Casos</a></h3>
+
+<?=$this->headTabla(array('Clientes','Abogados','Fechas','Descripcion','Cuota','Banco','Opciones'))?>
+<?php $caso = $this->caso; ?>
+<td>
+<?php if (count($caso->getClientes())): ?>				
+<ul>
+	<?php $nombres_cliente = array();?>
+	<?php foreach ($caso->getClientes() as $cliente): ?>
+		<?php $nombres_cliente[$cliente['id_cliente']] = $cliente['nombres_cliente']; ?>
+		<li>
+			<a href="/clientes/index/vercasos/id_cliente/<?=$cliente['id_cliente']?>">	
+				<?=$cliente['nombres_cliente']?> <?=$cliente['apellidos_cliente']?>
+			</a>
+		</li>	
+	<?php endforeach; ?>
+</ul>
+<?php else: ?>
+	<span style="text-decoration:underline">No hay clientes registrados para este caso</span>
+<?php endif; ?>
+</td>
+<td>
+<?php if (count($caso->getAbogados())): ?>				
+<ul>
+	<?php foreach ($caso->getAbogados() as $abogado): ?>
+		<li>
+			<a href="/abogados/index/vercasos/id_abogado/<?=$abogado['id_abogado']?>">	
+				<?=$abogado['nombres_abogado']?> <?=$abogado['apellidos_abogado']?>
+			</a>
+		</li>	
+	<?php endforeach; ?>
+</ul>
+<?php else: ?>
+	<span style="text-decoration:underline">No hay abogados registrados para este caso</span>
+<?php endif; ?>
+</td>
+<td>
+	<ul>
+		<li><?=$this->Info($caso->getPropiedad('fecha_inicio_caso'),'Sin Fecha Inicio','0000-00-00')?></li>
+		<li><?=$this->Info($caso->getPropiedad('fecha_fin_caso'),'Sin Fecha Fin','0000-00-00')?></li>
+	</ul>
+</td>
+<td>
+	<?=$this->Info($caso->getPropiedad('descripcion_caso'),'Sin descripci&oacute;n')?>
+<td>
+	<?=$this->Info($caso->getPropiedad('cuota_caso'),'Sin Cuota definida','0')?>
+</td>
+<td>
+<?php if(!is_null($caso->getPropiedadCuenta('nombre_cuenta'))): ?>
+	<?=$caso->getPropiedadCuenta('nombre_cuenta')?>
+<?php else: ?>
+	[Sin cuenta]
+<?php endif;?>
+</td>
+<td>
+	<ul> 
+		<li><a href="/casos/index/agregar/id_caso/<?=$this->caso->getPropiedad('id_caso')?>">Editar</a></li>
+		<li><a href="/casos/index/eliminar/id_caso/<?=$this->caso->getPropiedad('id_caso')?>">Eliminar</a></li>
+	</ul>
+</td>
+<?=$this->footTabla()?>
+
+<h2 id="tituloEstatus" style="margin-top:35px">Estatus del Caso</h2>
+<ul style="margin-left:110px" class="list-2">
+<?php if($caso->getPropiedad('publico_caso') == "1"):?>
+	<li id="casoPublico">
+		El caso es visible a trav&eacute;s de la p&aacute;gina web
+	</li>
+<?php else:?>
+	<li id="casoPrivado">El caso es privado y no ser&aacute; visto a trav&eacute;s de la p&aacute;gina web</li>
+<?php endif;?>
+<?php if($caso->getPropiedad('activo_caso') == "1"):?>
+	<li id="casoDesactivar">El caso est&aacute; <b>activo</b>, haga clic <a href="" id="dialog_link_desactivar">aqu&iacute;</a> para desactivarlo</li>	
+	<div id="dialog_desactivar" title="Confirmaci&oacute;n">
+		<p>&iquest;Est&aacute; usted seguro de que desea desactivar el caso <i><?=$this->caso->getPropiedad('nombre_caso')?></i>?</p>
+	</div>	
+<?php else: ?>
+	<li id="casoActivar">El caso est&aacute; <b>inactivo</b>, haga clic <a href="" id="dialog_link_activar">aqu&iacute;</a> para activarlo</li>
+	<div id="dialog_activar" class="activar" title="Confirmaci&oacute;n">
+		<p>&iquest;Est&aacute; usted seguro de que desea activar el caso <i><?=$this->caso->getPropiedad('nombre_caso')?></i>?</p>
+	</div>	
+<?php endif;?>
+<?php if($caso->getPropiedad('finalizado_caso') == "0"):?>
+	<li id="casoFinalizar">El caso a&uacute;n <b>no ha finalizado</b>, haga clic <a href="" id="dialog_link_finalizar">aqu&iacute;</a> para finalizarlo</li>
+	<div id="dialog_finalizar" class="activar" title="Confirmaci&oacute;n">
+		<p>&iquest;Est&aacute; usted seguro de que desea finalizar el caso <i><?=$this->caso->getPropiedad('nombre_caso')?></i>?</p>
+	</div>	
+<?php else: ?>
+	<li id="casoReiniciar">El caso <b>ha finalizado</b>, haga clic <a href="" id="dialog_link_comenzar">aqu&iacute;</a> para reiniciarlo</li>
+	<div id="dialog_comenzar" class="activar" title="Confirmaci&oacute;n">
+		<p>&iquest;Est&aacute; usted seguro de que desea reinicar el caso <i><?=$this->caso->getPropiedad('nombre_caso')?></i>?</p>
+	</div>	
+<?php endif;?>
+</ul>
+
+<h1 id="tituloHistoriaCaso" style="margin-top:40px;margin-bottom:20px">Historial</h1>
+<h2 id="tituloAgregar" style="margin-bottom:20px">Agregar Historial</h2>
+<?=$this->formAgregar->render()?>
+
+<h2 id="tituloVerHistorial" style="margin-top:20px">Ver Historial</h2>
+
+<?php if (count($this->paginator)): ?>
+<?=$this->headTabla(array('Fecha','Estatus','Anexo','Comentario Abogado','Comentario Clientes'))?>
+	<?php echo $this->paginationControl($this->paginator); ?>
+	<?php foreach ($this->paginator as $i=>$item): ?>
+	<tr>
+		<td><b><?=$item['fecha_historiacaso']; ?></b></td>
+		<td>
+			<?php if($i == 0): ?>
+				<p style="background-color:yellow"><?=$item['estatus_historiacaso']; ?></p>
+			<?php else: ?>
+				<p><?=$item['estatus_historiacaso']; ?></p>
+			<?php endif;?>
+		</td>
+		<td>
+			<?php if($item['archivo_historiacaso'] != ""):?>
+				<a href="/casos/index/veranexo/archivo/<?=$item['archivo_historiacaso']?>" target="_blank"><img src="/images/pdf.png"/></a>
+			<?php else:?>
+				No hay anexo
+			<?php endif;?>
+		</td>
+		<td><pre><i><?=$item['comentario_abogado_historiacaso']; ?></i></pre></td>
+		<td>
+		<?php $comentarios = library_casos_historiacaso::getComentariosClientes($item['comentario_cliente_historiacaso']);?>
+		<?php if (count($comentarios)): ?>
+			<?php foreach($comentarios as $i=>$comentario):?>
+				Comentario del cliente <?=$nombres_cliente[$i]?>:<br/> <pre><i><?=$comentario?></i></pre>
+			<?php endforeach;?>
+		<?php else:?>
+			No hay comentario de ning&uacute;n cliente
+		<?php endif;?>			
+		</td>
+	</tr>
+	<?php endforeach; ?>
+	<?=$this->footTabla()?>
+<?php else: ?>
+	<div class="info">No hay historia para este caso</div>
+<?php endif; ?>
+	<?php echo $this->paginationControl($this->paginator); ?>

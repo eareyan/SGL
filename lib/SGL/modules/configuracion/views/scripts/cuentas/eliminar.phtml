@@ -1,0 +1,5 @@
+<h2 id="tituloCuenta">Cuentas Bancarias </h2>
+<?=$this->titulos('cuenta',"Eliminar",$this->nombres); ?>
+<p id="mensajeEliminar">&iquest;Est&aacute;s seguro de que deseas eliminar la cuenta <?=$this->nombres?>?</p>
+<p id="notaEliminar">Nota: los casos que tengan esta cuenta pasar&aacute;n a no tener ninguna</p>
+<?=$this->formEliminar->render()?>

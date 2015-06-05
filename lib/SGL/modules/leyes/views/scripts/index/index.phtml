@@ -1,0 +1,47 @@
+<h2 id="tituloLeyes">M&oacute;dulo de Leyes </h2>
+<h3>Lista de Leyes | <a href="/leyes/index/agregar">Agregar Ley</a></h3>
+<?php if (count($this->paginator)): ?>
+	<?=$this->formBuscar->render()?>
+	<?=$this->paginationControl($this->paginator)?>
+	<?=$this->headTabla(array('Ley','Fecha Publicaci&oacute;n','URL','Archivo','Opciones'))?>
+	<?php foreach ($this->paginator as $item): ?>
+		<tr>
+			<td><?=$item['nombre_ley']?></td>
+			<td><?=$this->Info($item['fecha_publicacion_ley'],'Fecha no registrada','0000-00-00')?></td>
+			<td style='display:block;width:250px;'>
+			<?php $item['link_ley'] = urldecode($item['link_ley']); ?>
+				<?php if($item['link_ley']!=""):?>
+					<?php if(substr($item['link_ley'],0,7) != "http://"):?>
+						<a target="_blank" href="http://<?=$item['link_ley']?>"><?=$item['link_ley']?></a>
+					<?php else:?>
+						<a target="_blank" href="<?=$item['link_ley']?>"><?=$item['link_ley']?></a>
+					<?php endif;?>
+				<?php else:?>
+					No hay URL
+				<?php endif;?>
+			</td>				
+			<td>
+				<?php if($item['archivo_ley'] != ""): ?>
+					<a target="_blank" href="/leyes/index/verley/archivo/<?=$item['archivo_ley']?>"><img src="/images/pdf.png"/></a>
+				<?php else: ?>
+					No hay archivo .PDF
+				<?php endif;?>
+			</td>
+			<td>
+				<ul>
+					<!--<li><a href="/leyes/index/agregar/id_ley/<?=$item['id_ley']?>">Editar</a></li>-->
+					<li><a href="/leyes/index/eliminar/id_ley/<?=$item['id_ley']?>">Eliminar</a></li>
+				</ul>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	<?=$this->footTabla()?>
+	<?=$this->paginationControl($this->paginator)?>
+<?php else: ?>
+	<?php if(isset($this->modoBuscar)):?>
+		<?=$this->formBuscar->render()?>
+		<h2>No hay leyes registradas en el sistema para esta busqueda</h2>
+	<?php else: ?>
+		<div class="info">No hay leyes registradas en el sistema</div>
+	<?php endif; ?>
+<?php endif; ?>

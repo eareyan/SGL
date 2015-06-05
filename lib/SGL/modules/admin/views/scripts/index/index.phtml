@@ -1,0 +1,10 @@
+<h1>Opciones</h1>
+<ul><li>Hacer Login como:</li>
+	<ul>
+<?php foreach($this->usuarios as $usuario):?>
+	<li><a href="/admin/index/hacerlogin/id_usuario/<?=$usuario['id_usuario']?>"><?=$usuario['nombres_usuario']?> - <?=$usuario['email_principal_usuario']?></a></li>
+<?php endforeach;?>
+	</ul>
+	<li><a href="/admin/index/reseteardemo">Resetear Demo</a></li>
+	<li><a href="/index/logout">Salir</a></li>
+</ul>

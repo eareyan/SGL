@@ -1,0 +1,45 @@
+<h2 id="tituloClientes">M&oacute;dulo de Clientes </h2>
+<h3>Lista de Clientes | <a href="/clientes/index/agregar">Agregar Cliente</a></h3>
+<?php if (count($this->paginator)): ?>
+	<?=$this->formBuscar->render()?>
+	<?=$this->paginationControl($this->paginator)?>
+	<?=$this->headTabla(array('Cliente','Email','Tel&eacute;fonos','Casos','Opciones'))?>
+	<?php foreach ($this->paginator as $item): ?>
+		<tr>
+			<td>
+				<a href="/clientes/index/vercasos/id_cliente/<?=$item['id_cliente']?>">
+					<?=$item['nombres_cliente'] . " " . $item['apellidos_cliente']?>
+				</a>
+			</td>
+			<td><?=$this->Info($item['email_principal_cliente'],'Sin Email')?></td>
+			<td>
+				<ul>
+					<li>Celular: <br/><?=$this->Info($item['telefono_celular_cliente'],'Sin Tel. Cel.')?> </li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href="/clientes/index/vercasos/id_cliente/<?=$item['id_cliente']?>">Ver Casos</a></li>
+					<li><a href="/casos/index/agregar/id_cliente/<?=$item['id_cliente']?>">Agregar Caso</a></li>
+				</ul>	
+			</td>
+			<td>
+				<ul>
+					<li><a href="/clientes/index/agregar/id_cliente/<?=$item['id_cliente']?>">Editar</a></li>
+					<li><a href="/clientes/index/eliminar/id_cliente/<?=$item['id_cliente']?>">Eliminar</a></li>
+				</ul>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	<?=$this->footTabla()?>
+	<?=$this->paginationControl($this->paginator)?>
+<?php else: ?>
+	<?php if(isset($this->modoBuscar)):?>
+		<?=$this->formBuscar->render()?>
+		<h2>No hay clientes registrados en el sistema para esta busqueda</h2>
+	<?php else: ?>
+		<div class="info">No hay clientes registrados en el sistema</div>
+	<?php endif; ?>	
+<?php endif; ?>
+
+

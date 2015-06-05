@@ -1,0 +1,159 @@
+#hor-minimalist-a {
+  xbackground: none repeat scroll 0 0 #FFFFFF;
+  background: url("images/inner-glow-bot.jpg") no-repeat scroll 0 100% transparent;  
+  border-collapse: collapse;
+  font-family: "Lucida Sans Unicode","Lucida Grande",Sans-Serif;
+  font-size: 12px;
+  margin: 20px;
+  text-align: left;
+  margin-left: 10%;
+  width: 80%;
+}
+#hor-minimalist-a {
+  border-collapse: collapse;
+  font-family: "Lucida Sans Unicode","Lucida Grande",Sans-Serif;
+  font-size: 12px;
+  text-align: left;
+}
+#hor-minimalist-a th {
+  border-bottom: 2px solid #000;
+  color: #000;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 10px 8px;
+}
+#hor-minimalist-a td {
+  color: #000;
+  padding: 9px 8px 0;
+}
+#hor-minimalist-b tbody tr:hover td {
+  color: #000099;
+}
+#hor-minimalist-a tbody tr:hover td {
+  color: #000099;
+}
+.paginationControl{
+	text-align: center;
+}
+p{
+	float: left;
+}
+#notaEliminar {
+  -moz-background-size: auto auto;
+  background-attachment: scroll;
+  background-color: #FFF8BF;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat;
+  border: 2px solid #FFD324;
+  color: #FF8800;
+  margin-left: 10px;
+  padding: 8px 10px 6px 34px;
+  text-align: center;
+  width: 90%;
+}
+#mensajeEliminar{
+	font-size: larger;
+	margin: 10px;
+}
+h1,h2{ margin:10px}
+
+.info, .success, .warning, .error, .validation {
+border: 1px solid;
+margin: 10px 0px;
+padding:15px 10px 15px 50px;
+background-repeat: no-repeat;
+background-position: 10px center;
+}
+.info {
+color: #00529B;
+background-color: #BDE5F8;
+background-image: url('/images/Knob Info.png');
+}
+.success {
+font-size: larger;
+color: #4F8A10;
+background-color: #DFF2BF;
+background-image:url('/images/Knob Valid Green.png');
+}
+.warning {
+color: #9F6000;
+background-color: #FEEFB3;
+background-image: url('/images/Knob Attention.png');
+}
+.error {
+color: #D8000C;
+background-color: #FFBABA;
+background-image: url('/images/Knob Cancel.png');
+}
+.errors{
+	color: red;
+	float: right;
+}
+#tituloVerHistorial,#tituloAgregar,#tituloEstatus,#tituloCasos,#tituloClientes,#tituloAbogados,#tituloLeyes,#tituloUsuarios,#tituloConfiguracion,#tituloLogin,#tituloEmail,#tituloCuenta,#tituloHistoriaCaso{
+	background-repeat: no-repeat;
+	padding-left: 40px;
+	padding-top: 10px;
+	height: 35px;
+}
+#tituloVerHistorial{
+	background-image: url('/images/verhistorial-icon.png');
+}
+#tituloAgregar{
+	background-image: url('/images/agregar-icon.png');
+}
+#tituloEstatus{
+	background-image: url('/images/estatus-icon.png');
+}
+#tituloCasos{
+	background-image: url('/images/casos-icon.png');
+}
+#tituloClientes{
+	background-image: url('/images/clientes-icon.png');
+}
+#tituloAbogados{
+	background-image: url('/images/abogados-icon.png');
+}
+#tituloLeyes{
+	background-image: url('/images/leyes-icon.png');
+}
+#tituloUsuarios{
+	background-image: url('/images/usuarios-icon.png');
+}
+#tituloConfiguracion{
+	background-image: url('/images/configuracion-icon.png');
+}
+#tituloLogin{
+	background-image: url('/images/login-icon.png');
+}
+#tituloEmail{
+	background-image: url('/images/email-icon.png');
+}
+#tituloCuenta{
+	background-image: url('/images/cuenta-icon.png');
+}
+#tituloHistoriaCaso{
+	background-image: url('/images/historiacaso-icon.png');
+}
+#casoPrivado,#casoPublico,#casoActivar,#casoDesactivar,#casoFinalizar,#casoReiniciar{
+	padding-left:45px;
+	padding-top:10px;
+}
+#casoPrivado{
+	background:url('/images/privado.png') no-repeat scroll 0 0 transparent;
+}
+#casoPublico{
+	background:url('/images/publico.png') no-repeat scroll 0 0 transparent;
+}
+#casoActivar{
+	background:url('/images/play-icon.png') no-repeat scroll 0 0 transparent;
+}
+#casoDesactivar{
+	background:url('/images/pause-icon.png') no-repeat scroll 0 0 transparent;
+}
+#casoFinalizar{
+	background:url('/images/stop-icon.png') no-repeat scroll 0 0 transparent;
+}
+#casoReiniciar{
+	background:url('/images/repeat-icon.png') no-repeat scroll 0 0 transparent;
+}

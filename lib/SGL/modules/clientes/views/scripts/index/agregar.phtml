@@ -1,0 +1,9 @@
+<h2 id="tituloClientes">M&oacute;dulo de Clientes </h2>
+<h3><a href="/clientes">Lista de Clientes</a> | Agregar Cliente</h3>
+<?php if(isset($this->correorepetido) && $this->correorepetido):?>
+	<div class="warning" style="font-size:large;line-height:30px">
+		El email ya est&aacute; registrado en el sistema, por favor proporcione otro email. 
+	</div>
+<?php endif;?>
+<?=$this->titulos('cliente',$this->modo,$this->nombres_cliente); ?>
+<?= $this->formAgregar->render() ?>

@@ -1,0 +1,82 @@
+<style>
+#Nombre-Caso{width:20%}
+#Clientes{width:15%}
+#Abogados{width:15%}
+#Descripcion{width:35%}
+#Opciones{width:15%}
+#hor-minimalist-a {width: 100%;margin: 0px}
+</style>
+
+<h2 id="tituloCasos">M&oacute;dulo de Casos </h2>
+<h3>Lista de Casos | <a href="/casos/index/agregar">Agregar Caso</a></h3>
+
+<?php if (count($this->paginator)): ?>
+	<?php echo $this->paginationControl($this->paginator); ?>
+	<?=$this->headTabla(array('Nombre Caso','Clientes','Abogados','Descripcion','Publico?','Opciones'))?>
+		<?php foreach ($this->paginator as $caso): ?>
+			<?php 
+				/*
+				*	Busco las dependencias (clientes y abogados) del caso ahorita y no antes para evitar overhead.
+				*	Asi busco unicamente las dependencias de los casos que efectivamente van a ser mostrados al usuario.
+				*/
+				$caso = library_casos_Factory::agregarDependencias($caso); 
+			?>
+			<tr>
+				<td style="text-align:center">
+					<a href="/casos/index/verdetalle/id_caso/<?=$caso->getPropiedad('id_caso')?>">
+						<?=$caso->getPropiedad('nombre_caso')?>
+					</a>
+				</td>
+				<td>
+				<?php if (count($caso->getClientes())): ?>				
+						<ul>
+					<?php foreach ($caso->getClientes() as $cliente): ?>
+						<li>
+							<a href='/clientes/index/vercasos/id_cliente/<?=$cliente['id_cliente']?>'>
+								<?=$cliente['nombres_cliente']?> <?=$cliente['apellidos_cliente']?>
+							</a>
+						</li>
+					<?php endforeach; ?>
+						</ul>
+				<?php else: ?>
+					No hay clientes registrados
+				<?php endif; ?>
+				</td>
+				<td>
+				<?php if (count($caso->getAbogados())): ?>				
+					<ul>
+					<?php foreach ($caso->getAbogados() as $abogado): ?>
+						<li>
+							<a href='/abogados/index/vercasos/id_abogado/<?=$abogado['id_abogado']?>'>
+								<?=$abogado['nombres_abogado']?> <?=$abogado['apellidos_abogado']?>
+							</a>
+						</li>
+					<?php endforeach; ?>
+					</ul>
+				<?php else: ?>
+					No hay abogados registrados
+				<?php endif; ?>
+				</td>
+				<td><i><?=str_replace("\n","<br/>",$caso->getPropiedad('descripcion_caso'))?></i></td>
+				<td>
+					<?php if($caso->getPropiedad('publico_caso') == 0):?>
+						<img src="/images/privado.png"/>
+					<?php else:?>
+						<img src="/images/publico.png"/>
+					<?php endif;?>
+				</td>				
+				<td>
+					<ul>
+						<li><a href="/casos/index/verdetalle/id_caso/<?=$caso->getPropiedad('id_caso')?>">Ver Detalles</a></li>
+						<li><a href="/casos/index/agregar/id_caso/<?=$caso->getPropiedad('id_caso')?>">Editar</a></li>
+						<li><a href="/casos/index/eliminar/id_caso/<?=$caso->getPropiedad('id_caso')?>">Eliminar</a></li>
+					</ul>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+	<?=$this->footTabla()?>
+	<?php echo $this->paginationControl($this->paginator); ?>
+<?php else: ?>
+	<div class="info">No hay casos registrados en el sistema</div>
+<?php endif; ?>
+

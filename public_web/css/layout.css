@@ -1,0 +1,60 @@
+#main1, #main2 {width:954px; margin:0 auto;}
+
+#header {height:246px;}
+#header, #content1, #content2, #footer { font-size:0.814em;}
+
+.col-1, .col-2, .col-3, .col-4 { float:left;}
+
+/*======= index.html =======*/
+#page1 #content1 .col-1 {width:222px; margin-right:22px;}
+#page1 #content1 .col-2 { width:222px; margin-right:22px;}
+#page1 #content1 .col-3 { width:222px; margin-right:22px;}
+#page1 #content1 .col-4 { width:222px;}
+#page1 #content2 .col-1 { width:275px; margin-right:69px;}
+#page1 #content2 .col-2 { width:268px; margin-right:69px;}
+#page1 #content2 .col-3 { width:249px;}
+
+/*======= index-1.html =======*/
+#page2 #content1 .col-1 { width:275px; margin-right:69px;}
+#page2 #content1 .col-2 { width:268px; margin-right:69px;}
+#page2 #content1 .col-3 { width:249px;}
+#page2 #content2 .col-1 { width:611px; margin-right:69px;}
+#page2 #content2 .col-2 { width:268px;}
+
+/*======= index-2.html =======*/
+#page3 #content1 .col-1 { width:260px; margin-right:82px;}
+#page3 #content1 .col-2 { width:268px; margin-right:69px;}
+#page3 #content1 .col-3 { width:274px;}
+#page3 #content2 .col-1 { width:268px; margin-right:69px;}
+#page3 #content2 .col-2 { width:611px;}
+#page3 #content2 .col-2 .col-1 { width:248px; margin-right:93px;}
+#page3 #content2 .col-2 .col-2 { width:248px;}
+
+/*======= index-3.html =======*/
+#page4 #content1 .col-1 { width:273px; margin-right:69px;}
+#page4 #content1 .col-2 { width:588px;}
+#page4 #content2 .col-1 { width:275px; margin-right:64px;}
+#page4 #content2 .col-2 { width:275px; margin-right:64px;}
+#page4 #content2 .col-3 { width:275px;}
+
+/*======= index-4.html =======*/
+#page5 #content1 .col-1 { width:260px; margin-right:82px;}
+#page5 #content1 .col-2 { width:268px; margin-right:69px;}
+#page5 #content1 .col-3 { width:274px;}
+#page5 #content2 .col-1 { width:268px; margin-right:69px;}
+#page5 #content2 .col-2 { width:611px;}
+
+/*======= index-5.html =======*/
+#page6 #content1 .col-1 { width:275px; margin-right:69px;}
+#page6 #content1 .col-2 { width:268px; margin-right:69px;}
+#page6 #content1 .col-3 { width:273px;}
+#page6 #content2 .col-1 { width:616px; margin-right:69px;}
+#page6 #content2 .col-1 .col-1 { width:328px; margin-right:0;}
+#page6 #content2 .col-1 .col-2 { width:288px;}
+#page6 #content2 .col-2 { width:268px;}
+
+
+/*=========================*/
+
+
+#footer {height:116px; background:url(/images/footer-bg.gif) no-repeat left top;}

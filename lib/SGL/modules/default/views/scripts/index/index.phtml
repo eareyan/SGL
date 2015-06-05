@@ -1,0 +1,10 @@
+<style>
+	dt{margin-top: 15px}
+	dd{margin-top: 15px}
+</style>
+<h2 id="tituloLogin">Ingresar al Sistema de Gesti&oacute;n Legal</h2>
+<?php if($this->FalloLogin):?>
+	<div class="error"><h2>Credenciales inv&aacute;lidas</h2></div>
+<?php endif;?>
+<?=$this->LoginForm->render()?>
+

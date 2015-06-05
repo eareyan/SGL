@@ -1,0 +1,80 @@
+form{  
+background:#fff;  
+width:560px;  
+margin:5px auto;  
+padding:0;  
+overflow:auto;  
+}  
+  
+dt{  
+padding:0;  
+clear:both;  
+width:30%;  
+float:left;  
+text-align:right;  
+margin:5px 5px 5px 0;  
+}  
+  
+dd{  
+padding:0;  
+float:left;  
+width:68%;  
+margin:5px 2px 5px 0;  
+}  
+
+p{  
+padding:0;  
+margin:0;  
+}  
+  
+input, textarea{  
+margin:0 0 2px 0;  
+padding:0;  
+}   
+submit{  
+float:right;  
+}  
+.required:before{content:'* '}  
+#.optional:before{content:'+ '} 
+
+#formbuscar{
+	background: url("images/inner-glow-bot.jpg") no-repeat scroll 0 100% transparent;
+	width: 50%;
+	border: 0px;
+	margin-bottom: 5px;	
+}
+#formbuscar dd{
+	width: 54%;
+}
+#Eliminar{
+	margin-top: 5px;
+}
+#formbuscar fieldset{
+	width: 100%;
+}
+h3XXXX{
+	width: 45%; 
+	float: left;
+}
+#formEliminar{
+	background: url("images/inner-glow-bot.jpg") no-repeat scroll 0 100% transparent;
+	border: 0px;
+	width: 100%;
+	float: left;
+	text-align: center;
+}
+#formEliminar input{
+	font-size: 16px;
+}
+#fieldset-formEliminar{
+	border: 0px;
+	background: url("images/inner-glow-bot.jpg") no-repeat scroll 0 100% transparent;	
+}
+#Registrar,#Entrar{
+	margin-left: 50%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+label{
+	font-size: larger;
+}

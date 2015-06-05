@@ -1,0 +1,64 @@
+<style>
+#hor-minimalist-a{width: 100%;margin-left: 0px;}
+</style>
+<h2 id="tituloClientes">M&oacute;dulo de Clientes </h2>
+<h2>Datos del cliente <?=$this->cliente['nombres_cliente']?> <?=$this->cliente['apellidos_cliente']?>:</h2>
+<?=$this->headTabla(array('Nombres','Fecha de Nacimiento','Direcci&oacute;n Habitaci&oacute;n','Tel&eacute;fonos','Emails','Opciones'))?>
+<tr>
+	<td><?=$this->Info($this->cliente['nombres_cliente'].' '.$this->cliente['apellidos_cliente'],null)?></td>
+	<td><?=$this->Info($this->cliente['fecha_nacimiento_cliente'],"Sin Fecha de Nacimiento",'0000-00-00')?></td>
+	<td><?=$this->Info($this->cliente['direccion_habitacion_cliente'],"Sin Direcci&oacute;n de Habitaci&oacute;n")?></td>
+	<td>
+		<ul>
+			<li>Habitaci&oacute;n: <br/><?=$this->Info($this->cliente['telefono_habitacion_cliente'],'Sin Tel. Hab.')?> </li>
+			<li>Oficina: <br/><?=$this->Info($this->cliente['telefono_oficina_cliente'],'Sin Tel. Ofic,')?> </li>
+			<li>Celular: <br/><?=$this->Info($this->cliente['telefono_celular_cliente'],'Sin Tel. Cel.')?> </li>
+		</ul>
+	</td>
+	<td>
+		<ul>
+			<li>Principal: <br/><?=$this->Info($this->cliente['email_principal_cliente'],'Sin email principal')?></li>
+			<li>Alternativo: <br/><?=$this->Info($this->cliente['email_alternativo_cliente'],'Sin email alternativo')?></li>
+		</ul>
+	</td>
+	<td>
+		<ul>
+			<li><a href="/clientes/index/agregar/id_cliente/<?=$this->cliente['id_cliente']?>">Editar</a></li>
+			<li><a href="/clientes/index/eliminar/id_cliente/<?=$this->cliente['id_cliente']?>">Eliminar</a></li>
+		</ul>
+	</td>	
+</tr>
+<?=$this->footTabla()?>
+<h2>Casos del cliente <?=$this->cliente['nombres_cliente']?> <?=$this->cliente['apellidos_cliente']?>:</h2>
+
+<?php if (count($this->paginator)): ?>
+	<?php echo $this->paginationControl($this->paginator); ?>
+	<?=$this->headTabla(array('Nombre Caso','Abogados','Descripcion'))?>
+	<?php foreach ($this->paginator as $caso): ?>
+	<tr>
+		<td>
+			<a href="/casos/index/verdetalle/id_caso/<?=$caso->getPropiedad('id_caso')?>"><?=$caso->getPropiedad('nombre_caso')?></a>
+		</td>
+		<td>
+			<?php if (count($caso->getAbogados())): ?>
+			<ul>
+				<?php foreach ($caso->getAbogados() as $abogado): ?>
+					<li>
+						<a href="/abogados/index/vercasos/id_abogado/<?=$abogado['id_abogado']?>">
+							<?=$abogado['nombres_abogado']?>
+						</a>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+			<?php else: ?>
+				<span style="text-decoration:underline">No hay abogados registrados para este caso</span>
+			<?php endif; ?>
+		</td>
+		<td><i><?=$caso->getPropiedad('descripcion_caso')?></i></td>
+	</tr>
+	<?php endforeach; ?>
+	<?=$this->footTabla()?>
+	<?php echo $this->paginationControl($this->paginator); ?>
+<?php else: ?>
+	<div class="info">No hay casos registrados en el sistema para este cliente</div>
+<?php endif; ?>

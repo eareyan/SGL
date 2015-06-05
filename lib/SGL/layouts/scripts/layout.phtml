@@ -1,0 +1,91 @@
+<?php echo $this->doctype() ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link REL="SHORTCUT ICON" HREF="/images/legal.ico"/>
+<?php $this->headScript()->appendFile('/js/rollover.js') ?>
+<?php $this->headLink()->appendStylesheet('/css/forms.css') ?>
+<?php $this->headLink()->appendStylesheet('/css/util.css') ?>
+<?php $this->headLink()->appendStylesheet('/css/layout.css') ?>
+<?php $this->headLink()->appendStylesheet('/css/style.css') ?>
+<?php $this->headLink()->appendStylesheet('/css/jquery-ui-1.8.13.custom.css') ?>
+<?php $this->headMeta()->appendName('keywords','Sistema de Gestion Legal, Sistema Legal, Sistema para Bufetes Legal, Sistema para Escritorios Juridicos, Casos, Legal, Ley, Leyes, Abogados, Bufete Legal, Clientes, Notificaciones Automaticas de Pago')?>
+<?php $this->headMeta()->appendName('description','El Sistema de Gestion Legal es un sistema dirigido a automatizar y organizar la informacion de los escritorios juridicos en general.')?>
+<?=$this->headMeta()?>
+
+<?=$this->headTitle('Sistema de Gestion Legal') ?>
+<?=$this->headLink()?>
+<?=$this->headStyle()?>
+<?=$this->headScript()?>
+<?=$this->jQuery()?>
+<?php if (!(isset($this->noDojo) &&  $this->noDojo) && $this->dojo()->isEnabled()){
+	  	$this->dojo()->setLocalPath($this->BaseUrl().'/plugins/dojo/dojo.js')->addStyleSheetModule('dijit.themes.tundra');
+	  	echo $this->dojo();
+	  	}
+?>	
+<!--[if IE]>
+   <script type="text/javascript" src="/js/ie_png.js"></script>
+   <script type="text/javascript">
+       ie_png.fix('.png');
+   </script>
+<![endif]-->
+</head>
+<body id="page" onload="MM_preloadImages('/images/m1-act.jpg','/images/m2-act.jpg','/images/m3-act.jpg','/images/m4-act.jpg','/images/m5-act.jpg','/images/m6-act.jpg','/images/m7-act.jpg')">
+<div id="main">
+  <div id="header-tail">
+  	<div id="header">
+		<div id="logo">
+			<a href="/">
+			<?php if(isset($this->escritorio_juridico['id_escritorio_juridico'])):?>
+				<img src="/images/clientes/logo<?=$this->escritorio_juridico['id_escritorio_juridico']?>.gif" alt="" />
+			<?php else:?>
+				<img src="/images/logo.gif" alt="" />
+			<?php endif;?>
+			</a>
+		</div>
+		<div id="slogan"><img src="/images/logo_azul.png" alt="Sistema de Gesti&oacute;n Legal"/></div>
+	<?php if(isset($this->escritorio_juridico['nombre_escritorio_juridico'])):?>
+		<ul id="navi">
+		  <li><a href="/configuracion"><?=$this->escritorio_juridico['nombre_escritorio_juridico']?></a></li>
+		</ul>
+	<?php endif; ?>
+  <!-- header -->
+		<ul id="menu">
+		<?php if(!isset($this->hideMenu) && !$this->hideMenu): ?>
+			<?php $menu_items = array('casos','clientes','abogados','leyes','usuarios','configuracion','index/logout');?>
+			<?php foreach($menu_items as $i=>$item):?>
+				<?php if($this->menu == ($i+1)):?>
+				  <li><a href="/<?=$item?>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('m<?=($i+1)?>','','/images/m<?=($i+1)?>-act.jpg',<?=($i+1)?>)"><img src="/images/m<?=($i+1)?>-act.jpg" alt="" id="m<?=($i+1)?>" /></a></li>
+				<?php else:?>
+				  <li><a href="/<?=$item?>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('m<?=($i+1)?>','','/images/m<?=($i+1)?>-act.jpg',<?=($i+1)?>)"><img src="/images/m<?=($i+1)?>.jpg" alt="" id="m<?=($i+1)?>" /></a></li>
+			<?php endif;?>
+			<?php endforeach;?>
+		<?php endif;?>
+		</ul>
+  	</div>
+  </div>
+  <!-- content -->
+  <div id="content-top" class="png">  
+  </div>
+    <div id="content" class="png">
+	  <div id="inner-glow-top">
+	    <div id="inner-glow-bot">
+		  <div id="content-indent">
+			<?php if(count($this->messages->getMessages())>0):?>
+				<div class="success"><?php echo current($this->messages->getMessages()); ?></div>
+			<?php endif;?>	
+			<?php echo $this->layout()->content ?>					
+		  </div>
+		</div>
+	  </div>
+    </div>
+  <div id="content-bot" class="png"></div>
+  <!-- footer -->
+  <div id="footer">
+  	<a href="http://www.sistemadegestionlegal.com" target="_blank">Sistema de Gesti&oacute;n Legal</a> (c) 2011
+  </div>
+</div>
+</body>
+</html>

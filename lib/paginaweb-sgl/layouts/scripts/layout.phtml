@@ -1,0 +1,93 @@
+<?=$this->doctype() ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link REL="SHORTCUT ICON" HREF="/images/SGL.ico"/>
+
+<?php $this->headLink()->appendStylesheet('/css/layout.css')?>
+<?php $this->headLink()->appendStylesheet('/css/style.css')?>
+<?php $this->headLink()->appendStylesheet('/css/util.css')?>
+<?php $this->headMeta()->appendName('keywords', 'Sistema de Gestion Legal, Sistema Legal, Sistema para Escritorio Juridico, Escritorio Juridico,Organizar Casos, Casos, Organizar Expedientes, Expendientes, Legal, Ley, Leyes, Abogado, Abogados, Abogada, Abogados, Clientes, Cliente, Magistrado, Tribunal, Bufete Legal')?>
+<?php $this->headMeta()->appendName('description','Somos una plataforma en la Web que te ayuda a organizar, gestionar y administrar tu Escritorio Jurídico')?>
+<?=$this->headMeta()?>
+
+<?=$this->headTitle('Sistema de Gestion Legal -  Tu Escritorio Juridico en la Web')?>
+
+<?=$this->headLink()?>
+<?=$this->headStyle()?>
+<?=$this->headScript()?>
+<!--[if IE]>
+   <link href="style_ie.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24375905-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body id="page<?=$this->page_id?>">
+<div class="tail-top">
+  <div class="tail-bottom">
+    <div class="tail-cont">
+      <div id="main1">
+        <!-- header -->
+        <div id="header">
+          <div class="row-1">
+            <!--<div class="fright"><a href="#" class="rss">Submit</a></div>-->
+            <div class="fleft">
+              <ul class="site-nav">
+              	<?php 
+              		$opciones_menu = array('Inicio'=>'/','Nosotros'=>'/nosotros','El Sistema'=>'/sistema',
+              								'Demo'=>'/demo','Aliados'=>'/aliados','Contacto'=>'/contacto','FAQ'=>'/faq');
+              		$i = 0;
+              	?>
+              	<?php foreach($opciones_menu as $nombre=>$url):?>
+              		<?php $i++;?>
+              		<?php if($i == $this->page_id):?>
+		                <li><a href="<?=$url?>" class='act'><em><b><?=$nombre?></b></em></a></li>
+              		<?php else: ?>
+    	                <li><a href="<?=$url?>"><em><b><?=$nombre?></b></em></a></li>
+          		<?php endif;?>
+              	<?php endforeach;?>
+              </ul>
+            </div>
+          </div>
+          <div class="row-2">
+            <div class="logo" style="margin-bottom:20px"><a href="/"><img src="/images/logo.jpg" alt="" /></a></div>
+            <div class="slogan">
+       		<img src="/images/slogan.gif" alt="Somos una plataforma en la Web que te ayuda a organizar, gestionar y administrar tu Escritorio Jurídico" /></div>
+          </div>
+        </div>
+        <!-- content1 -->
+      <?php echo $this->layout()->content ?>	
+      <!-- footer -->
+      <div id="footer">
+        <div class="indent">
+          <ul class="footer-nav">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/nosotros">Nosotros</a></li>
+            <li><a href="/sistema">El Sistema</a></li>
+            <li><a href="/demo">Demo</a></li>
+            <li><a href="/aliados">Aliados</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+            <li class="last"><a href="/faq">FAQ</a></li>
+          </ul>
+          <p>Sistema de Gesti&oacute;n Legal <?=date('Y')?> &copy; <a href="/politicaprivacidad">Pol&iacute;tica de Privacidad.</a> Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<h2 id="tituloCasos">M&oacute;dulo de Casos </h2>
+<h3><a href="/casos">Lista de Casos</a> | Agregar Caso</h3>
+<?php if(isset($this->nombre_caso)): ?>
+	<h2>Editar Caso: <?=$this->nombre_caso?></h2>
+	<h3><a href="/casos/index/verdetalle/id_caso/<?=$this->id_caso?>">Ver propiedades de este caso</a></h3>
+<?php else:?>
+	<h2>Agregar Caso</h2>
+<?php endif;?>
+<?=$this->formCaso->render()?>

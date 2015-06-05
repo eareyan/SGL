@@ -1,0 +1,44 @@
+<h2 id="tituloAbogados">M&oacute;dulo de Abogados </h2>
+<h3>Lista de Abogados | <a href="/abogados/index/agregar">Agregar Abogado</a></h3>
+<?php if (count($this->paginator)): ?>
+	<?=$this->formBuscar->render()?>
+	<?=$this->paginationControl($this->paginator)?>
+	<?=$this->headTabla(array('Abogado','Especialidad','Email','Tel&eacute;fonos','Casos','Opciones'))?>
+	<?php foreach ($this->paginator as $item): ?>
+		<tr>
+			<td>
+				<a href="/abogados/index/vercasos/id_abogado/<?=$item['id_abogado']?>">
+					<?=$item['nombres_abogado'] .' '. $item['apellidos_abogado']?>
+				</a>
+			</td>
+			<td><?=$this->Info($item['especialidad_abogado'],'Ninguna')?></td>
+			<td><?=$this->Info($item['email_principal_abogado'],'Sin Email')?></td>
+			<td>
+				<ul>
+					<li>Celular:<br> <?=$this->Info($item['telefono_celular_abogado'],'Sin Cel.')?> </li>
+				</ul>			
+			</td>
+			<td>
+				<ul>
+					<li><a href="/abogados/index/vercasos/id_abogado/<?=$item['id_abogado']?>">Ver Casos</a></li>
+					<li><a href="/casos/index/agregar/id_abogado/<?=$item['id_abogado']?>">Agregar Caso</a></li>
+				</ul>	
+			</td>			
+			<td>
+				<ul>
+					<li><a href="/abogados/index/agregar/id_abogado/<?=$item['id_abogado']?>">Editar</a></li>
+					<li><a href="/abogados/index/eliminar/id_abogado/<?=$item['id_abogado']?>">Eliminar</a></li>
+				</ul>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	<?=$this->footTabla()?>
+	<?=$this->paginationControl($this->paginator)?>
+<?php else: ?>
+	<?php if(isset($this->modoBuscar)):?>
+		<?=$this->formBuscar->render()?>
+		<h2>No hay abogados registrados en el sistema para esta busqueda</h2>
+	<?php else: ?>
+		<div class="info">No hay abogados registrados en el sistema</div>
+	<?php endif; ?>
+<?php endif; ?>

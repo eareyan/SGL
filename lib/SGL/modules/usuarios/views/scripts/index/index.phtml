@@ -1,0 +1,25 @@
+<h2 id="tituloUsuarios">M&oacute;dulo de Usuarios </h2>
+<h3>Lista de Usuarios | <a href="/usuarios/index/agregar">Agregar Usuario</a></h3>
+<?php if (count($this->paginator)): ?>
+	<?=$this->formBuscar->render()?>
+	<?=$this->paginationControl($this->paginator)?>
+	<?=$this->headTabla(array('Usuario','Email','Editar','Eliminar'))?>
+	<?php foreach ($this->paginator as $item): ?>
+		<tr>
+			<td><?=$item['nombres_usuario']?> </td>
+			<td><?=$item['email_principal_usuario']?></td>
+			<td><a href="/usuarios/index/agregar/id_usuario/<?=$item['id_usuario']?>">Editar</a></td>
+			<td><a href="/usuarios/index/eliminar/id_usuario/<?=$item['id_usuario']?>">Eliminar</a></td>		
+		</tr>
+	<?php endforeach; ?>
+	<?=$this->footTabla()?>
+	<?=$this->paginationControl($this->paginator)?>
+<?php else: ?>
+	<?php if(isset($this->modoBuscar)):?>
+		<?=$this->formBuscar->render()?>
+		<h2>No hay usuarios registrados en el sistema para esta busqueda</h2>
+	<?php else: ?>
+		<h2>No hay usuarios registrados en el sistema</h2>
+	<?php endif; ?>	
+	
+<?php endif; ?>

@@ -1,0 +1,5 @@
+<h2 id="tituloAbogados">M&oacute;dulo de Abogados </h2>
+<?=$this->titulos('abogado',"Eliminar",$this->nombres); ?>
+<p id="mensajeEliminar">&iquest;Est&aacute;s seguro de que deseas eliminar al abogado <?=$this->nombres?>?</p>
+<p id="notaEliminar">Nota: se borrar&aacute; este abogado de todos los casos a los que est&eacute; asociado</p>
+<?=$this->formEliminar->render()?>

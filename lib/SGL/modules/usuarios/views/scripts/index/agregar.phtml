@@ -1,0 +1,14 @@
+<style>
+	#email_principal_usuario-element{width: 65%}
+	#email_principal_usuario-element input{width: 40%}
+	.MensajeExtra{width: 59%;float: right;font-size: large}
+</style>
+<h2 id="tituloUsuarios">M&oacute;dulo de Usuarios </h2>
+<h3><a href="/usuarios">Lista de Usuarios</a> | Agregar Usuario</h3>
+<?php if(isset($this->correorepetido) && $this->correorepetido):?>
+	<div class="warning" style="font-size:large;line-height:30px">
+		El email ya est&aacute; registrado en el sistema, por favor proporcione otro email. 
+	</div>
+<?php endif;?>
+<h2>Agregar Usuario</h2>
+<?=$this->formAgregar->render()?>
